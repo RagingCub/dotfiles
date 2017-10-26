@@ -1,0 +1,21 @@
+xterm*faceName:   Inconsolata
+xterm*faceSize:   10
+xterm*renderFont: true
+! VT Font Menu:   Unreadable
+xterm*faceSize1:  4
+! VT Font Menu:   Tiny
+xterm*faceSize2:  8
+! VT Font Menu:   Small
+xterm*faceSize3:  12
+! VT Font Menu:   Medium
+xterm*faceSize4:  16
+! VT Font Menu:   Large
+xterm*faceSize5:  22
+! VT Font Menu:   Huge
+xterm*faceSize6:  30
+
+xterm*VT100.Translations: #override \
+    Ctrl <Key> minus: smaller-vt-font() \n\
+    Ctrl <Key> plus: larger-vt-font() \n\
+    Ctrl <Key> 0: set-vt-font(d)
+

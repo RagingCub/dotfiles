@@ -25,3 +25,5 @@
 * Display manager `lightdm`
 * Display server `xorg`
 * Window manager `i3`
+
+usign stow to symlink files

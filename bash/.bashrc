@@ -24,7 +24,7 @@
 # User dependent .bashrc file
 
 # If not running interactively, don't do anything
-[[ "$-" != *i* ]] && return
+[[ $- != *i* ]] && return
 
 # Color definitions (taken from Color Bash Prompt HowTo).
 # Some colors might look different of some terminals.
@@ -152,8 +152,8 @@ alias ls='ls -hF --color=auto'                 # classify files in colour
 alias l.='ls -d .*'
 # alias dir='ls --color=auto --format=vertical'
 # alias vdir='ls --color=auto --format=long'
-# alias ll='ls -l'                              # long list
-# alias la='ls -A'                              # all but . and ..
+alias ll='ls -l'                              # long list
+alias la='ls -A'                              # all but . and ..
 # alias l='ls -CF'                              #
 
 # Umask

@@ -1,3 +1,5 @@
 [alias]
 	tree = log --graph --decorate=short --all --full-history --sparse --pretty='%C(yellow) [%h]%C(auto)%d%gn%Creset %<(30,trunc)%s %C(magenta bold)-> %C(cyan bold)%<(12,trunc)%cN %C(red dim)(%cr)'
 	update = !git pull && git submodule update --init --recursive
+[core]
+	editor = vim

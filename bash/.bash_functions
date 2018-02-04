@@ -96,8 +96,10 @@ todo() {
     elif [[ "$1" == "-r" ]]; then
         nl -b a "$HOME/.todo"
         eval printf %.0s- '{1..'"${COLUMN:-$(tput cols)}"\}; echo
-        read -p "Type a number to remove: " number
-        sed -i ${number}d $HOME/.todo "$HOME/.todo"
+        read -p "Type a number to remove(<m,n> for multiple): " number
+        if [[ "$number" != "" ]]; then
+            sed -i ${number}d $HOME/.todo
+        fi
     else
         printf "%s\n" "$*" >> "$HOME/.todo"
     fi

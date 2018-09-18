@@ -163,7 +163,7 @@ alias la='ls -A'                              # all but . and ..
 # alias l='ls -CF'                              #
 
 # Umask
-#
+
 # /etc/profile sets 022, removing write perms to group + others.
 # Set a more restrictive umask: i.e. no exec perms for others:
 # umask 027
@@ -171,9 +171,16 @@ alias la='ls -A'                              # all but . and ..
 # umask 077
 
 # Functions
-#
+
 # Some people use a different file for functions
 if [ -f "${HOME}/.bash_functions" ]; then
   source "${HOME}/.bash_functions"
 fi
+
+# Java options
+
+# Silence 'Picked up _JAVA_OPTIONS' message on command line
+_SILENT_JAVA_OPTIONS="$_JAVA_OPTIONS"
+unset _JAVA_OPTIONS
+alias java='java "$_SILENT_JAVA_OPTIONS"' 
 

@@ -1,2 +1,2 @@
 # Git bash completion
-[[ -f ~/.git-completion.bash ]] && . ~/.git-completion.bash
+[[ -f /usr/share/git/completion/git-completion.bash ]] && . /usr/share/git/completion/git-completion.bash

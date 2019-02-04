@@ -65,8 +65,8 @@ color_prompt=yes
 if [ "$color_prompt" = yes ]; then
     PS1="\[${Green}\]\u@\h \[${Yellow}\]\w"
     # Customize to show a special git prompt if available
-    if [[ -f ~/.git-prompt.sh ]]; then
-        . ~/.git-prompt.sh
+    if [[ -f /usr/share/git/completion/git-prompt.sh ]]; then
+        . /usr/share/git/completion/git-prompt.sh
         PS1="${PS1}\[${Cyan}\]\$(__git_ps1 ' (%s)')"
     fi
     PS1="${PS1}\[${NC}\]\n\$ "
@@ -161,6 +161,9 @@ alias l.='ls -d .*'
 alias ll='ls -l'                              # long list
 alias la='ls -A'                              # all but . and ..
 # alias l='ls -CF'                              #
+
+# List contents of folder in a git repo with date of commit
+alias gitls='for n in *; do git log -1 --format="%ai $n" "$n"; done;'
 
 # Umask
 

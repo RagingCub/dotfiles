@@ -17,12 +17,12 @@
 * Program launcher `rofi`
 * PDF viewer `zathura`
 * Text editor `vim`
-* Terminal emulator `xterm`
+* Terminal emulator `URxvt`
 * Window manager `i3`
 
 ## GUI
 
-* Display manager `lightdm`
+* Display manager `SDDM`
 * Display server `xorg`
 * Window manager `i3`
 

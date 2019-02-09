@@ -9,15 +9,22 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-set $mod Mod1
+set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 8
+font pango:Inconsolata 10
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
+
+# use window title, but no border
+#default_border normal 0
+# use no window title and a thick border
+default_border pixel 3
+# use neither window title nor border
+#default_border none
 
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -36,17 +43,17 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
+bindsym $mod+d exec "rofi -show combi"
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -55,10 +62,10 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -67,7 +74,7 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+h split h
+bindsym $mod+Shift+v split h
 
 # split in vertical orientation
 bindsym $mod+v split v
@@ -131,10 +138,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
@@ -149,17 +156,34 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+# Gaps
+# global default values
+gaps inner 5
+#gaps outer 5
+#gaps horizontal set 5
+#gaps vertical set 5
+#gaps top set 5
+#gaps right set 5
+#gaps outer bottom set 0
+#gaps left set 5
+
+smart_gaps on
+
+
+# Start polybar to display a workspace bar
+exec_always --no-startup-id ~/.config/polybar/launch.sh
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-        status_command i3status
-}
+#bar {
+#    font pango:monospace 8
+#    status_command i3status
+#}
 
 # dex is a very handy utility for working with .desktop files
 exec dex -ae i3
 
 # Shutdown, reboot, lock screen
-set $Locker i3lock -i ~/.config/i3/screenSaver2_c.png && sleep 1
+set $Locker i3lock -i ~/.config/i3/screenSaver.png && sleep 1
 
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
@@ -176,3 +200,38 @@ mode "$mode_system" {
 }
 
 bindsym $mod+Pause mode "$mode_system"
+
+# configure Scratchpad
+# Make the currently focused window a scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Show the first scratchpad window
+bindsym $mod+minus scratchpad show
+
+# configure keyboard toggle
+exec --no-startup-id "setxkbmap -layout us,ca"
+exec --no-startup-id "setxkbmap -option 'grp:alt_shift_toggle'"
+
+# configure media keys
+# Pulse Audio controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id "amixer set Master 5%+"
+bindsym XF86AudioLowerVolume exec --no-startup-id "amixer set Master 5%-"
+bindsym XF86AudioMute exec --no-startup-id "amixer set Master toggle"
+
+# Screen brightness controls
+# Requires light package
+bindsym XF86MonBrightnessUp exec "light -A 5"
+bindsym XF86MonBrightnessDown exec "light -U 5"
+
+# Screen capture software
+bindsym Print exec "flameshot gui"
+
+# Start applications
+# start compositor
+exec --no-startup-id compton -CG &
+
+# start network-manager applet
+exec --no-startup-id nm-applet &
+
+# start udisk frontend with tray
+exec --no-startup-id udiskie --tray &

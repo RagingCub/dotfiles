@@ -17,7 +17,7 @@
 * Program launcher `rofi`
 * PDF viewer `zathura`
 * Text editor `vim`
-* Terminal emulator `URxvt`
+* Terminal emulator `st`
 * Window manager `i3`
 
 ## GUI

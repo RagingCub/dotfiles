@@ -7,15 +7,14 @@ killall -q polybar
 while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
 # Launch barBottom on all monitors
-#if type "xrandr"; then
-#    for m in $(xrandr --query | grep " connected" | cut -d ' ' -f1); do
-#        MONITOR=$m
-#        polybar barBottom &
-#    done
-#else
-#    polybar barBottom &
-#fi
-polybar bottom &
+if type "xrandr"; then
+    for m in $(xrandr --query | grep " connected" | cut -d ' ' -f1); do
+        MONITOR=$m \
+        polybar bottom &
+    done
+else
+    polybar bottom &
+fi
 
 notify-send "Bars launched..."
 

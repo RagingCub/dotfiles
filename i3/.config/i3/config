@@ -49,11 +49,11 @@ bindsym $mod+d exec "rofi -show combi"
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
-# change focus
-bindsym $mod+h focus left
-bindsym $mod+j focus down
-bindsym $mod+k focus up
-bindsym $mod+l focus right
+## change focus
+#bindsym $mod+h focus left
+#bindsym $mod+j focus down
+#bindsym $mod+k focus up
+#bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -61,11 +61,11 @@ bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
-# move focused window
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
+## move focused window
+#bindsym $mod+Shift+h move left
+#bindsym $mod+Shift+j move down
+#bindsym $mod+Shift+k move up
+#bindsym $mod+Shift+l move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -134,14 +134,14 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
+        ## Pressing left will shrink the window’s width.
+        ## Pressing right will grow the window’s width.
+        ## Pressing up will shrink the window’s height.
+        ## Pressing down will grow the window’s height.
+        #bindsym h resize shrink width 10 px or 10 ppt
+        #bindsym j resize grow height 10 px or 10 ppt
+        #bindsym k resize shrink height 10 px or 10 ppt
+        #bindsym l resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
@@ -199,7 +199,8 @@ mode "$mode_system" {
     bindsym Escape mode "default"
 }
 
-bindsym $mod+Pause mode "$mode_system"
+#bindsym $mod+Pause mode "$mode_system"
+bindsym $mod+l mode "$mode_system"
 
 # configure Scratchpad
 # Make the currently focused window a scratchpad
@@ -208,15 +209,17 @@ bindsym $mod+Shift+minus move scratchpad
 # Show the first scratchpad window
 bindsym $mod+minus scratchpad show
 
-# configure keyboard toggle
-exec --no-startup-id "setxkbmap -layout us,ca"
-exec --no-startup-id "setxkbmap -option 'grp:alt_shift_toggle'"
-
 # configure media keys
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id "amixer set Master 5%+"
 bindsym XF86AudioLowerVolume exec --no-startup-id "amixer set Master 5%-"
 bindsym XF86AudioMute exec --no-startup-id "amixer set Master toggle"
+
+# mpc controls
+bindsym XF86AudioPlay exec mpc toggle
+bindsym XF86AudioStop exec mpc stop
+bindsym XF86AudioNext exec mpc next
+bindsym XF86AudioPrev exec mpc prev
 
 # Screen brightness controls
 # Requires light package
@@ -226,12 +229,3 @@ bindsym XF86MonBrightnessDown exec "light -U 5"
 # Screen capture software
 bindsym Print exec "flameshot gui"
 
-# Start applications
-# start compositor
-exec --no-startup-id compton -CG &
-
-# start network-manager applet
-exec --no-startup-id nm-applet &
-
-# start udisk frontend with tray
-exec --no-startup-id udiskie --tray &

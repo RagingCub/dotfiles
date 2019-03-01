@@ -1,0 +1,7 @@
+" Set settings for IdeaVim plugin
+set showmode
+set surround
+
+" Also source system vim settings
+source ~/.vimrc
+

@@ -2,3 +2,5 @@
 [Default Applications]
 image/jpeg=feh.desktop
 image/png=feh.desktop
+text/html=brave-bin.desktop
+text/xml=brave-bin.desktop

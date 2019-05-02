@@ -14,6 +14,7 @@ setxkbmap -layout us,ca -option 'grp:alt_shift_toggle'
 ~/.fehbg &
 
 # set environment variables
+export TERMINAL=st
 export QT_QPA_PLATFORMTHEME=gtk2
 
 # Start applications

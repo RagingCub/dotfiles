@@ -30,3 +30,6 @@ udiskie --tray &
 # start conky and use file in user's configuration directory
 #conky -c ~/.config/conky/conky.conf &
 
+# start bluetooth control frontend
+#blueman-applet &
+

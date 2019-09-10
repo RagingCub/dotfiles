@@ -1,0 +1,18 @@
+[general]
+accounts = hotmail
+pythonfile = ~/.offlineimap.py
+
+[Account hotmail]
+localrepository = hotmail-local
+remoterepository = hotmail-remote
+
+[Repository hotmail-local]
+type = Maildir
+localfolders = ~/mail-hotmail
+
+[Repository hotmail-remote]
+type = IMAP
+remotehost = outlook.office365.com
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+remoteuser = <username>
+remotepasseval = get_pass("<username>")

@@ -115,3 +115,14 @@ man() {
     LESS_TERMCAP_us=$(echo -en $BGreen) \
     command man "$@"
 }
+
+# simple timer
+# requires zenity to display message
+# first argument is time to sleep
+# second is text to display
+timer() {
+    local N=$1; shift
+
+    (sleep $N && zenity --info --title="Time's Up" --text="${*:-BING}") &
+    echo "timer set for $N"
+}

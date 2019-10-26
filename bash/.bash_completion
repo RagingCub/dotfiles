@@ -1,2 +1,6 @@
 # Git bash completion
 [[ -f /usr/share/git/completion/git-completion.bash ]] && . /usr/share/git/completion/git-completion.bash
+
+# Tomb bash completion
+[[ -f ~/.config/tomb/tomb-completion.bash ]] && . ~/.config/tomb/tomb-completion.bash
+

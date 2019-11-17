@@ -179,6 +179,9 @@ exec_always --no-startup-id ~/.config/polybar/launch.sh
 #    status_command i3status
 #}
 
+# Start fehbg to display a backgroud
+exec_always --no-startup-id ~/.fehbg
+
 # dex is a very handy utility for working with .desktop files
 exec dex -ae i3
 
@@ -211,9 +214,13 @@ bindsym $mod+minus scratchpad show
 
 # configure media keys
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id "amixer set Master 5%+"
-bindsym XF86AudioLowerVolume exec --no-startup-id "amixer set Master 5%-"
-bindsym XF86AudioMute exec --no-startup-id "amixer set Master toggle"
+bindsym XF86AudioRaiseVolume exec --no-startup-id "pactl set-sink-volume 0 +5%"
+bindsym XF86AudioLowerVolume exec --no-startup-id "pactl set-sink-volume 0 -5%"
+bindsym XF86AudioMute exec --no-startup-id "pactl set-sink-mute 0 toggle"
+# Alsa Audio controls
+#bindsym XF86AudioRaiseVolume exec --no-startup-id "amixer set Master 5%+"
+#bindsym XF86AudioLowerVolume exec --no-startup-id "amixer set Master 5%-"
+#bindsym XF86AudioMute exec --no-startup-id "amixer set Master toggle"
 bindsym XF86AudioMicMute exec --no-startup-id ~/.config/i3/mic_toggle.sh
 
 # mpc controls

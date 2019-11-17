@@ -1,16 +1,18 @@
 ## `/home` directory structure
 
+* `apod`
+* `aur`
 * `bin`
-* `code`
-* `documents`
+* `Documents`
 * `dotfiles`
-* `downloads`
-* `music`
-* `pictures`
+* `Downloads`
+* `Music`
+* `Pictures`
+* `Projects`
 
 ## Default programs
 
-* Browser `opera`
+* Browser `brave`
 * File Manager `ranger`
 * Font `inconsolata`
 * Picture viewer `feh`

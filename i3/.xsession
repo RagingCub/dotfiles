@@ -10,9 +10,6 @@
 # configure keyboard toggle
 setxkbmap -layout us,ca -option 'grp:alt_shift_toggle'
 
-# load the wallpaper on login
-~/.fehbg &
-
 # set environment variables
 export TERMINAL=st
 export QT_QPA_PLATFORMTHEME=gtk2
@@ -26,6 +23,9 @@ nm-applet &
 
 # start udisk frontend with tray
 udiskie --tray &
+
+# start notification-daemon
+dunst &
 
 # start conky and use file in user's configuration directory
 #conky -c ~/.config/conky/conky.conf &

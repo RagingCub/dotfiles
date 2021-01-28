@@ -1,0 +1,12 @@
+set from="RagingCub <RagingCub@users.noreply.github.com>"
+
+set editor=vim
+set sendmail="/usr/bin/msmtp"
+
+# IMAP: offlineimap
+set edit_headers
+set folder = "~/mail-hotmail"
+source ~/.config/mutt/mailboxes
+set spoolfile = "+Inbox"
+set record = "+Sent"
+set postponed = "+Drafts"

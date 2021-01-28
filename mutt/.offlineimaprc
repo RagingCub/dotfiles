@@ -16,3 +16,12 @@ remotehost = outlook.office365.com
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt
 remoteuser = <username>
 remotepasseval = get_pass("<username>")
+
+[mbnames]
+enabled = yes
+filename = ~/.config/mutt/mailboxes
+header = "mailboxes "
+# peritem = "+%(accountname)s/%(foldername)s"
+peritem = "+%(foldername)s"
+sep = " "
+footer = "\n"

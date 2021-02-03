@@ -29,3 +29,7 @@
 * Window manager `i3`
 
 usign stow to symlink files
+
+## GnuPG
+
+[signing pgp keys](gnupg/.gnupg/signing-pgp-keys.md)

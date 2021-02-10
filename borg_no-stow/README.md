@@ -51,8 +51,8 @@ vim borg-backup.sh
 # chmod 700 borg-backup.sh
 # mkdir -p /root/bin
 # mv borg-backup.sh /root/bin
-# mv borg-backup.service /etc/serviced/service/
-# mv borg-backup.timer /etc/serviced/service/
+# mv borg-backup.service /etc/systemd/system/
+# mv borg-backup.timer /etc/systemd/system/
 ```
 
 Enable systemd timer for automatic daily backups

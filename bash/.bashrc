@@ -165,6 +165,10 @@ alias la='ls -A'                              # all but . and ..
 # List contents of folder in a git repo with date of commit
 alias gitls='for n in *; do git log -1 --format="%ai $n" "$n"; done;'
 
+# Add an "alert" alias for long running commands. Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
 # Umask
 
 # /etc/profile sets 022, removing write perms to group + others.

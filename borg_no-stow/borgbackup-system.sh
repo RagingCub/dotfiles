@@ -26,10 +26,13 @@ borg create                         \
     --compression zstd,8            \
     --exclude-caches                \
     --exclude '/home/*/.cache/*'    \
+    --exclude '/home/*/music/*'     \
+    --exclude '/home/*/pictures/*'  \
+    --exclude '/home/*/videos/*'    \
     --exclude '/var/cache/*'        \
     --exclude '/var/tmp/*'          \
                                     \
-    ::'{hostname}-{now}'            \
+    ::'{hostname}-{utcnow}'         \
     /etc                            \
     /home                           \
     /root                           \

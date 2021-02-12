@@ -3,4 +3,4 @@ Description=Borg System Backup
 
 [Service]
 Type=oneshot
-ExecStart=/root/bin/borg-backup.sh
+ExecStart=/root/bin/borgbackup-system.sh

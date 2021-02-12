@@ -2,9 +2,9 @@
 
 ## Files included:
 
-- `borg-backup.sh`
-- `borg-backup.service`
-- `borg-backup.timer`
+- `borgbackup-system.sh`
+- `borgbackup-system.service`
+- `borgbackup-system.timer`
 
 ## Setup on remote
 
@@ -35,11 +35,11 @@ Run first backup manually
 
 ### Automatic backups
 
-Fill `BORG_REPO` and `BORG_PASSPHRASE` in borg-backup.sh.
+Fill `BORG_REPO` and `BORG_PASSPHRASE` in borgbackup-system.sh.
 Use your favorite text editor.
 
 ```
-vim borg-backup.sh
+vim borgbackup-system.sh
 ```
 
 - change owner of files to root:root
@@ -47,17 +47,17 @@ vim borg-backup.sh
 - move files to final locations
 
 ```
-# chown root: borg-backup.sh borg-backup.service borg-backup.timer
-# chmod 700 borg-backup.sh
+# chown root: borgbackup-system.sh borgbackup-system.service borgbackup-system.timer
+# chmod 700 borgbackup-system.sh
 # mkdir -p /root/bin
-# mv borg-backup.sh /root/bin
-# mv borg-backup.service /etc/systemd/system/
-# mv borg-backup.timer /etc/systemd/system/
+# mv borgbackup-system.sh /root/bin
+# mv borgbackup-system.service /etc/systemd/system/
+# mv borgbackup-system.timer /etc/systemd/system/
 ```
 
 Enable systemd timer for automatic daily backups
 
 ```
-# systemctl enable borg-backup.timer
-# systemctl start borg-backup.timer
+# systemctl enable borgbackup-system.timer
+# systemctl start borgbackup-system.timer
 ```

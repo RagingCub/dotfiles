@@ -4,3 +4,6 @@
 # Tomb bash completion
 [[ -f ~/.config/tomb/tomb-completion.bash ]] && . ~/.config/tomb/tomb-completion.bash
 
+# TimeWarrior completion
+[[ -f ~/external/timew-bashcompletion/timew ]] && . ~/external/timew-bashcompletion/timew
+

@@ -1,0 +1,6 @@
+configuration {
+ modi: "combi";
+ font: "inconsolata 12";
+ combi-modi: "window,drun";
+ }
+@theme "Arc-Dark"

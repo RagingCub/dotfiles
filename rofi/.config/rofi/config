@@ -1,5 +1,0 @@
-rofi.combi-modi:    window,drun
-rofi.theme:         /usr/share/rofi/themes/Arc-Dark.rasi
-rofi.font:          inconsolata 12
-rofi.modi:          combi
-

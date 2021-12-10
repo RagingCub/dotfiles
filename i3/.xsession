@@ -8,15 +8,20 @@
 /usr/bin/lxpolkit &
 
 # configure keyboard toggle
-setxkbmap -layout us,ca -option 'grp:alt_shift_toggle'
+setxkbmap -option 'grp:alt_shift_toggle'
 
 # set environment variables
 export TERMINAL=st
 export QT_QPA_PLATFORMTHEME=gtk2
+#set ibus input variables
+export GTK_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+export QT_IM_MODULE=ibus
+ibus-daemon -drx
 
 # Start applications
 # start compositor
-compton -CG &
+picom &
 
 # start network-manager applet
 nm-applet &

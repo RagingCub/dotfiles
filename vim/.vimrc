@@ -74,12 +74,12 @@ Plugin 'tpope/vim-surround'
 " Install L9 and avoid a Naming conflict if you've already installed a
 " different version somewhere else.
 "Plugin 'ascenator/L9', {'name': 'newL9'}
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 "Plugin 'jeaye/color_coded'
 Plugin 'Chiel92/vim-autoformat'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'tpope/vim-fugitive'
+" Plugin 'vim-airline/vim-airline'
+" Plugin 'vim-airline/vim-airline-themes'
+" Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-commentary'
 
 " All of your Plugins must be added before the following line
@@ -129,6 +129,9 @@ nmap <leader>w :w!<cr>
 " Set display line numbers
 set number
 set relativenumber
+
+" Set show whitespace
+set list
 
 " Set 7 lines to the cursor - when moving vertically using j/k
 set so=7

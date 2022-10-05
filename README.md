@@ -10,6 +10,12 @@
 * `Pictures`
 * `Projects`
 
+## Setup
+
+1. Install stow
+1. Clone the repository
+3. Install desired settings `stow --dotfiles bash`
+
 ## Default programs
 
 * Browser `brave`

@@ -45,57 +45,77 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Vundle
-set nocompatible              " be iMproved, required
-filetype off                  " required
+" Plug
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+    silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+    autocmd VimEnter *PlugInstall --sync | source $MYVIMRC
+endif
+call plug#begin()
+" The default plugin directory will be as follows:
+"   - Vim (Linux/macOS): '~/.vim/plugged'
+"   - Vim (Windows): '~/vimfiles/plugged'
+"   - Neovim (Linux/macOS/Windows): stdpath('data') . '/plugged'
+" You can specify a custom plugin directory by passing it as the argument
+"   - e.g. `call plug#begin('~/.vim/plugged')`
+"   - Avoid using standard Vim directory names like 'plugin'
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+" Make sure you use single quotes
 
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-Plugin 'tpope/vim-surround'
-" plugin from http://vim-scipts.org/vim/scripts.html
-"Plugin 'L9'
-" Git plugin not hosted on GitHub
-"Plugin 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (i.e. when working on your own plugin)
-"Plugin 'file:///home/gmarik/path/to/plugin'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-"Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Install L9 and avoid a Naming conflict if you've already installed a
-" different version somewhere else.
-"Plugin 'ascenator/L9', {'name': 'newL9'}
-"Plugin 'Valloric/YouCompleteMe'
-"Plugin 'jeaye/color_coded'
-Plugin 'Chiel92/vim-autoformat'
-" Plugin 'vim-airline/vim-airline'
-" Plugin 'vim-airline/vim-airline-themes'
-" Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-commentary'
+" Shorthand notation for GitHub; translates to https://github.com/junegunn/seoul256.vim.git
+"Plug 'junegunn/seoul256.vim'
+" Any valid git URL is allowed
+"Plug 'https://github.com/junegunn/vim-easy-align.git'
+" Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
+"Plug 'fatih/vim-go', { 'tag': '*' }
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
+Plug 'tpope/vim-surround'
+"Plug 'L9'
+"Plug 'git://git.wincent.com/command-t.git'
+"Plug 'file:///home/gmarik/path/to/plugin'
+"Plug 'Valloric/YouCompleteMe'
+"Plug 'jeaye/color_coded'
+Plug 'vim-autoformat/vim-autoformat'
+"Plug 'vim-airline/vim-airline'
+"Plug 'vim-airline/vim-airline-themes'
+"Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-commentary'
+
+Plug 'normen/vim-pio'   " platformio plugin
+Plug 'yegappan/lsp'     " language server protocol (LSP) plugin for Vim9
+
+" Call plug#end to update &runtimepath and initialize the plugin system.
+" - It automatically executes `filetype plugin indent on` and `syntax enable`
+call plug#end()
+" You can revert the settings after the call like so:
+"   filetype indent off " Disables file-type-specific indentation
+"   syntax off          " Disables syntax highlighting
 "
 " Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
+" :PlugInstall  - install the plugins
+" :PlugUpdate   - install or update the plugins
+" :PlugClean    - remove plugins no longer in the list
+" :PlugUpgrade  - upgrade vim-plug itself
+" :PlugStatus   - check the status of plugins
+" :PlugDiff     - review the changes from the last update
+
+" Color schemes should be loaded after plug#end().
+" We prepend it with 'silent!' to ignore errors when it's not yet installed.
+"silent! colorscheme seoul256
+
 " Put your non-Plugin stuff after this line
+
+let lspOpts = #{autoHighlightDiags: v:true}
+autocmd User LspSetup call LspOptionsSet(lspOpts)
+
+let lspServers = [#{
+    \       name: 'clang',
+    \       filetype: ['c', 'cpp'],
+    \       path: '/usr/bin/clangd',
+    \       args: ['--background-index']
+    \   }]
+autocmd User LspSetup call LspAddServer(lspServers)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
@@ -132,6 +152,7 @@ set relativenumber
 
 " Set show whitespace
 set list
+set listchars+=tab:>-
 
 " Set 7 lines to the cursor - when moving vertically using j/k
 set so=7

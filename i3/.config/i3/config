@@ -214,9 +214,9 @@ bindsym $mod+minus scratchpad show
 
 # configure media keys
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id "pactl set-sink-volume 0 +5%"
-bindsym XF86AudioLowerVolume exec --no-startup-id "pactl set-sink-volume 0 -5%"
-bindsym XF86AudioMute exec --no-startup-id "pactl set-sink-mute 0 toggle"
+bindsym XF86AudioRaiseVolume exec --no-startup-id "pamixer --increase 5"
+bindsym XF86AudioLowerVolume exec --no-startup-id "pamixer --decrease 5"
+bindsym XF86AudioMute exec --no-startup-id "pamixer -t"
 # Alsa Audio controls
 #bindsym XF86AudioRaiseVolume exec --no-startup-id "amixer set Master 5%+"
 #bindsym XF86AudioLowerVolume exec --no-startup-id "amixer set Master 5%-"
@@ -231,8 +231,8 @@ bindsym XF86AudioPrev exec mpc prev
 
 # Screen brightness controls
 # Requires light package
-bindsym XF86MonBrightnessUp exec "light -A 5"
-bindsym XF86MonBrightnessDown exec "light -U 5"
+bindsym XF86MonBrightnessUp exec "sudo /usr/bin/light -A 5"
+bindsym XF86MonBrightnessDown exec "sudo /usr/bin/light -U 5"
 
 # Screen capture software
 bindsym Print exec "flameshot gui"
